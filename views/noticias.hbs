@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    {{#each noticias}}
+    <div class="col-4">
+      <div class="card" style="width: 100%">
+        <img src="/images/noticiasRetro.jpg" class="card-img-top" alt="Noticia-retro" />
+        <div class="card-body">
+          <h5 class="card-title">{{titulo}}</h5>
+          <p class="card-text">{{descripcion}}</p>
+          <p class="card-text text-info">{{auto}} | {{fecha}} </p>
+          <a href="/noticias/{{id}}" class="btn btn-primary btn-block">Ver mas</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
