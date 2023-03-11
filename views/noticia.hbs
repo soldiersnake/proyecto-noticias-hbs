@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img
+        src="/images/noticiasRetro.jpg"
+        class="card-img-top"
+        alt="Noticia-retro"
+      />
+
+    </div>
+    {{#each array_noticia}}
+      <div class="col">
+        <h4 class="mt-3">{{titulo}}</h4>
+        <small class="text-primary">{{fecha}} - {{autor}} </small>
+        <p class="mt-3">{{texto}}</p>
+      </div>
+    {{/each}}
+  </div>
+</div>
