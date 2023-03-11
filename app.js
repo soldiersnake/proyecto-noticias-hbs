@@ -3,10 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
+//rutas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let noticiasRoter = require('./routes/noticias')
+let noticiasRouter = require('./routes/noticias')
+let loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -20,9 +23,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//configuracion de session
+app.use(session({
+  secret: 'noticias_',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {maxAge: 60*60*1000},  //la duracion de la session de la cookie
+
+}));
+
+//vistas de rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/noticias', noticiasRoter);
+app.use('/noticias', noticiasRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

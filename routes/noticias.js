@@ -3,6 +3,7 @@ const router = express.Router();
 const noticiasModel = require("./../models/noticiasModels");
 
 router.get("/all", async (req, res, next) => {
+  console.log(`El valor de la sesion en noticias es : ${req.session.usuario}`)
   let noticias_array = await noticiasModel.getNoticias();
   res.render("noticias", { noticias: noticias_array });
 });
