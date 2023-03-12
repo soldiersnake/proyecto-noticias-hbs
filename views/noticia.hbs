@@ -16,4 +16,34 @@
       </div>
     {{/each}}
   </div>
+  <div class="row mt-3">
+    {{#if status}}
+      <div class="col-4">
+        <h5>Comentar</h5>
+        <form method="post" action="/noticias/comentar/">
+          <div class="form-group">
+            <input type="hidden" name="id_noticia" value="{{id_noticia}}" />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="comentario"
+              class="form-control"
+              placeholder="Comentario"
+            >
+
+            </textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary btn-block mt-3"
+          >Comentar</button>
+        </form>
+      </div>
+    {{else}}
+      <div class="col-4">
+        <a href="/login">Iniciar Sesion</a>
+      </div>
+    {{/if}}
+
+  </div>
 </div>
