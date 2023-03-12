@@ -9,6 +9,26 @@ async function getNoticias() {
   } catch (error) {
     throw error;
   }
+};
+
+async function getComentariosById(id){
+  try {
+    let query = "select * from comentario where id_noticia = ? order by id desc";
+    const rows = await pool.query(query, id);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+};
+
+async function crearComentario(obj){
+  try {
+    let query = "insert into comentario set ?";
+    const rows = await pool.query(query,[obj]);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function getNoticiasById(id) {
@@ -21,6 +41,6 @@ async function getNoticiasById(id) {
   } catch (error) {
     throw error;
   }
-}
+};
 
-module.exports = { getNoticias, getNoticiasById };
+module.exports = { getNoticias, getNoticiasById, crearComentario, getComentariosById };
